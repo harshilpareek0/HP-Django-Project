@@ -5,3 +5,5 @@ Requirements Daddy: Cris Scruggs
 
 polls -> eg
 mysite -> exgame
+
+added some random ish
