@@ -1,0 +1,12 @@
+language: python
+python:
+- '3.8'
+install:
+- pip install -r requirements.txt
+deploy:
+  provider: heroku
+  api_key:
+    secure: c0/sum3ZYyw/+kALmoORifL8v7gKS7UBorrqP6j9dC9iZc2iwfpirWX+1w7tx1B7Q+czNZtVYMLW+VcH/XQWnbc6DJxM1KGBK3DsCGvNKlZjCitptRO7+LY+NiYVVlwGbY0GM8VREPeNrtIz5HCioufW7w1oopdoEH9gmRkvj1fMLYB5NhunL/zGhhQDVzNsIqQZxAUxk5FswOgl4V+Sbp4dJOORxzydNSNqXuGtcmgltWIgEhfmZNwLV77nt9eTbG0Vgh/Vl8dF8HkQv2o4RC2QXBAc9IQuUQY1Ba4/3zDErigb0LjYpkTos7HjyptOckI+DFSYAc4HKCV0vdylFuhpPd/TMUDZ70hKdMyy6b5FeGNtiBdp7OCChVMMcvjWikwERXvFziaVu+aLk7dJgsASGrPIdvJh0Eo57PVBcnsYok8WoIRGj8Pcmo27BD9btWu3A79wInjA64gGM3fZTvAzpDjYSX0wW56OtMvRScEwm5uUspv6DA3BXluXw+E96RuXYhkhubw05IEbY5e6Kyvq9RNxVULDhRm36LZ1XYt562cis5NWOd45ae+KMOHNcoQ0MtoyXyT/D1UH4RPBmVEs2u7oMJ/0NDkCmnFThdMVITV9lKb4NP05meD5Y4mAIYwNaOvm08A7iaroCmR0fYtSQ6o+9IuNjz35Ms86hMY=
+  app: b-09-exgame
+  on:
+    repo: uva-cs3240-s21/project-b-09
