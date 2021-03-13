@@ -5,7 +5,7 @@ from django.test import TestCase
 
 class FirstTestCase(TestCase):
     def setUp(self):
-        x = 0
+        x = 1
 
     def test_first_test_case(self):
-        self.assertEqual(0, 0)
+        self.assertEqual(1, 1)
