@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',#
     'allauth.socialaccount',#
     'allauth.socialaccount.providers.google',#
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -128,14 +129,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-django_heroku.settings(locals(), test_runner=False)
+django_heroku.settings(locals())
 
 AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 3
+SITE_ID = 2
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
