@@ -43,3 +43,15 @@ from django.contrib.auth.models import (
 #         choices = models.exChoices,
 #         default = none,
 #     )
+from django.urls import reverse
+
+# Create your models here.
+class Profile(models.Model):
+    username = models.CharField(max_length=200)
+    creation_date = models.DateTimeField("date created")
+    age = models.IntegerField()
+    #image = models.ImageField(default='x.jpg')
+    def get_absolute_url(self):
+        return reverse('profile')   
+
+    

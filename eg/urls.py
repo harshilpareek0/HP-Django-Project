@@ -1,16 +1,14 @@
-from django.urls import path
-
-
+from django.urls import include, path
+from django.views.generic import TemplateView
 from . import views
 from .views import UserEditView
 from .views import Profile
 
-app_name = 'exgame'
-user_id = '<user_id>'
+
 urlpatterns = [
-    path('', views.index, name='index'),
-    #account creation
-    path('edit_profile/',UserEditView.as_view(), name = 'edit_profile'),
-    #already created account
-    path('profile/', Profile.as_view(), name = 'profile')
+    path('', TemplateView.as_view(template_name="index.html")),
+    path('game/', views.index),
+    path('accounts/', include('allauth.urls')),
+    path('profile/',views.ProfileInputView.as_view(),name='profileinput'),
+    path('profile/list', views.ProfileView.as_view(), name='profile'),
 ]
