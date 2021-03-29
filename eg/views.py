@@ -21,10 +21,11 @@ class IndexView(generic.ListView):
 #     #model = Profile
 #     return render('eg/account_creation.html')
 
+#creates an edit profile page
 class UserEditView(generic.UpdateView):
     form_class = UserChangeForm
     template_name = 'edit_profile.html'
-    success_url = reverse_lazy('Profile')
+    success_url = reverse_lazy('Profile') # this doesn't work
 
     def get_object(self):
         return self.request.user
