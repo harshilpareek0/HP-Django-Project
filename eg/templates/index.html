@@ -7,6 +7,7 @@
   <h1>Exercise Gamification</h1>
   {% if user.is_authenticated %}
   <p>Welcome <a href="/edit_profile"> {{ user.username }}</a></p>
+  <p> This is your email address {{user.email}}</p>
  
   {% else %}
   <a href="{% provider_login_url 'google' %}">Login with Google</a>
