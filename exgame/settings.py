@@ -150,3 +150,5 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+#AUTH_USER_MODEL = 'eg.CustomUser'
