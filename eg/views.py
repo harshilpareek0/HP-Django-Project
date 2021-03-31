@@ -3,9 +3,9 @@ from .models import Profile
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.views.generic import TemplateView
-from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from .forms import EditProfileForm
 
 class PasswordsChangeView(PasswordChangeView):
@@ -32,7 +32,7 @@ class ProfileView(generic.ListView):
 class ProfileInputView(CreateView):
     model = Profile
     template_name = 'profile_input.html'
-    fields = ['username','creation_date','age']
+    #fields = ['username','creation_date','age']
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
@@ -41,3 +41,9 @@ class UserEditView(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
+
+class UserRegisterView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = 'register.html'
+    def get_success_url(self):
+        return reverse('index')

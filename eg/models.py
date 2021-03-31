@@ -10,9 +10,6 @@ from django.db import models
 
 # Create your models here.
 class Profile(models.Model):
-    username = models.CharField(max_length=200)
-    creation_date = models.DateTimeField("date created")
-    age = models.IntegerField()
     #image = models.ImageField(default='x.jpg')
     def get_absolute_url(self):
         return reverse('profile')   
@@ -36,3 +33,20 @@ class Profile(models.Model):
 #     def __str__(self):
 #         return f"{self.username}: {self.first_name} {self.last_name}"
 
+
+
+# from django.db.models.signals import post_save
+# from django.dispatch import receiver
+
+# # Create your models here.
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE, null = True)
+#     bio = models.TextField(max_length=500, blank=True)
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
