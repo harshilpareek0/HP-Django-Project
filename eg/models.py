@@ -54,4 +54,13 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse('profile')   
 
-    
+class Exercise(models.Model):
+    exercise_name = models.CharField(max_length=200)
+
+    def get_absolute_url(self):
+        return reverse('progress')
+
+class Posts(models.Model):
+    post_text = models.CharField(max_length=1000)
+    def get_absolute_url(self):
+        return reverse('forum')
