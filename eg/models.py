@@ -6,13 +6,18 @@ from django.urls import reverse
 # from django.contrib.auth.models import AbstractUser
 # from django.core.validators import RegexValidator
 from django.db import models
+
+from django.contrib.auth.models import User
 # from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Profile(models.Model):
-    #image = models.ImageField(default='x.jpg')
-    def get_absolute_url(self):
-        return reverse('profile')   
+    user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
+    bio = models.TextField(default = "Who Are You?")
+
+    def __str__(self):
+        return str(self.user)
+    #image = models.ImageField(default='x.jpg')   
 
 
 
