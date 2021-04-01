@@ -20,3 +20,7 @@ class FirstTestCase(TestCase):
         progress = (Exercise.objects.count() % 10) * 100
         progress_percentage = progress / 10
         self.assertEqual(30, progress_percentage)
+
+    def test_level_test_case(self):
+        level = floor(Exercise.objects.count() / 10)
+        self.assertEqual(0, level)
