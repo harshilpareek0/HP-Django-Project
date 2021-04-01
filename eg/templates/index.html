@@ -19,7 +19,7 @@
     <div class = "row no-gutters">
       <div class = "col-md-2">
         {%if user.profile.profile_pic.url%}
-        <img class="card-img-top" src="{{user.profile.profile_pic.url}}" class = "rounded-circle" alt="Card image cap">
+        <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
         {% else %}
         <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
         {%endif%}
