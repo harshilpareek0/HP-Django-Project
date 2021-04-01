@@ -7,7 +7,7 @@ from math import floor
 
 
 class FirstTestCase(TestCase):
-    def setUpTestData(cls):
+    def setUp(self):
         Exercise.objects.create(exercise_name="sprint")
         Exercise.objects.create(exercise_name="swim")
         Exercise.objects.create(exercise_name="walk")
