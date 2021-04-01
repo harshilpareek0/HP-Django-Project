@@ -56,7 +56,6 @@ class Profile(models.Model):
 
 class Exercise(models.Model):
     exercise_name = models.CharField(max_length=200)
-
     def get_absolute_url(self):
         return reverse('progress')
 
