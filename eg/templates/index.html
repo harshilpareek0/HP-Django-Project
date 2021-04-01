@@ -15,6 +15,10 @@
   <h3>Welcome {{ user.first_name }}</h3>
   <br></br>
 
+  <p> Would you like to make a <a href="/forum_post"> post?</a></p>
+  <p> Input  <a href="/exercise"> exercises </a></p>
+  <p> View <a href="/progress"> progress</a></p>
+
   <div class="card mb-3">
     <div class = "row no-gutters">
       <div class = "col-md-2">
@@ -36,6 +40,7 @@
               </div>
     </div>
   </div>
+
  
   {% else %}
   <a href="{% provider_login_url 'google' %}">Login with Google</a>

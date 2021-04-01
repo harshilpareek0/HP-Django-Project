@@ -57,3 +57,12 @@ class Profile(models.Model):
 # @receiver(post_save, sender=User)
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
+class Exercise(models.Model):
+    exercise_name = models.CharField(max_length=200)
+    def get_absolute_url(self):
+        return reverse('progress')
+
+class Posts(models.Model):
+    post_text = models.CharField(max_length=1000)
+    def get_absolute_url(self):
+        return reverse('forum')
