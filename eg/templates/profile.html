@@ -1,0 +1,13 @@
+{% load bootstrap4 %}
+
+<blockquote class="blockquote text-center">
+    {% if latest_profile_list %}
+    <ul>
+        {% for profile in latest_profile_list %}
+        <li><a href="">{{ profile.age}} {{profile.username }} {{profile.creation_date}}</a></li>
+        {% endfor %}
+    </ul>
+</blockquote>
+{% else %}
+<p>No profiles are available.</p>
+{% endif %}

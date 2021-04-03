@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div>
+    <ul>
+        <img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100">
+        <p>{{user.username}}, you have made {{progress_percentage}} % progress towards the next level</p>
+        <p>Your level is {{level}}</p>
+    </ul>
+</div>
+
+{% endblock %}

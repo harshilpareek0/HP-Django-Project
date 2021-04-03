@@ -1,12 +1,46 @@
+{%extends 'base.html'%}
+{% load static%}
+
+{% block content %}
 {% load socialaccount %}
 <html>
   <head>
     <title>Google Registration</title>
   </head>
   <body>
-  <h1>My Google Login Project</h1>
+  <h1>Exercise Gamification</h1>
+  <br></br>
+  <br></br>
   {% if user.is_authenticated %}
-  <p>Welcome, {{ user.username }} !</p>
+  <h3>Welcome {{ user.first_name }}</h3>
+  <br></br>
+
+  <p> Would you like to make a <a href="/forum_post"> post?</a></p>
+  <p> Input  <a href="/exercise"> exercises </a></p>
+  <p> View <a href="/progress"> progress</a></p>
+
+  <div class="card mb-3">
+    <div class = "row no-gutters">
+      <div class = "col-md-2">
+        {%if user.profile.profile_pic.url%}
+        <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
+        {% else %}
+        <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
+        {%endif%}
+        </div>
+        <div class= "col-md-10">
+          <div class="card-body">
+            <h5 class="card-title">{{user.username}}</h5>
+              <p class="card-text">{{user.profile.bio}}</p>
+              <p class="card-text"><small class = "text-muted"> Joined {{user.date_joined}}</small></p>
+              
+              <a href="#" class="btn btn-primary">Visit Profile</a> 
+              <!-- ^^^In the future this should take you to their public facing profile page -->
+              </div>
+              </div>
+    </div>
+  </div>
+
  
   {% else %}
   <a href="{% provider_login_url 'google' %}">Login with Google</a>
@@ -14,3 +48,4 @@
 
   </body>
 </html>
+{% endblock %}

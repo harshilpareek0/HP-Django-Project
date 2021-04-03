@@ -1,0 +1,14 @@
+{% load bootstrap4 %}
+
+<blockquote class="blockquote text-center">
+    {% if posts %}
+    <ul>
+        {% for post in posts %}
+        <li>Post by {{user.username}}: </li>
+        <p>{{post.post_text}}</p>
+        {% endfor %}
+    </ul>
+</blockquote>
+{% else %}
+<p>No posts are available.</p>
+{% endif %}

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import django_heroku
 
+import os
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',#
     'allauth.socialaccount',#
     'allauth.socialaccount.providers.google',#
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -127,6 +130,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 django_heroku.settings(locals(), test_runner=False)
 
@@ -135,7 +143,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 3
+SITE_ID = 4
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -149,3 +157,5 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+#AUTH_USER_MODEL = 'eg.CustomUser'
