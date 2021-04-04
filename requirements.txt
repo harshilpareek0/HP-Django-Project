@@ -42,9 +42,12 @@ parso==0.7.1
 patsy==0.5.1
 pickleshare==0.7.5
 Pillow==8.0.1
+postgres==3.0.0
 prompt-toolkit==3.0.8
 protobuf==3.14.0
 psycopg2==2.8.6
+psycopg2-binary==2.8.6
+psycopg2-pool==1.1
 pycparser==2.20
 pygame==2.0.0.dev10
 Pygments==2.7.3
