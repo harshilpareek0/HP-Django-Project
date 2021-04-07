@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',#
     'allauth.socialaccount',#
     'allauth.socialaccount.providers.google',#
+    'allauth.socialaccount.providers.facebook',
     'bootstrap4'
 ]
 
@@ -130,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = True
 
@@ -156,7 +157,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 4
+SITE_ID = 5  # 3 for heroku, 4 for 127.0.0.1:8000, 5 for localhost:8000
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {

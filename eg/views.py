@@ -77,3 +77,4 @@ class ForumView(generic.ListView):
     template_name = 'forum.html'
     def get_queryset(self):
         return Posts.objects.all()
+
