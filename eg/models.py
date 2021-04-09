@@ -6,6 +6,7 @@ from django.urls import reverse
 # from django.contrib.auth.models import AbstractUser
 # from django.core.validators import RegexValidator
 from django.db import models
+from django.db.models import F
 
 from django.contrib.auth.models import User
 # from django.utils.translation import gettext_lazy as _
@@ -58,11 +59,26 @@ class Profile(models.Model):
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
 class Exercise(models.Model):
+    exerciser_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     exercise_name = models.CharField(max_length=200)
     def get_absolute_url(self):
         return reverse('progress')
 
 class Posts(models.Model):
+    post_number = models.IntegerField(default=0)
+    post_maker = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     post_text = models.CharField(max_length=1000)
+    likes = models.IntegerField(default=0)
+    class Meta:
+        ordering = [F('likes').desc(nulls_last=True)]
+    def get_absolute_url(self):
+        return reverse('forum')
+    def __str__(self):
+        return str(self.post_number)
+
+class Replies(models.Model):
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name="replies")
+    reply_maker = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    reply_text = models.CharField(max_length=1000)
     def get_absolute_url(self):
         return reverse('forum')
