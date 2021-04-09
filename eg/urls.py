@@ -5,7 +5,6 @@ from .views import UserRegisterView, UserEditView, PasswordsChangeView,InputExer
 from django.contrib.auth import views as auth_views
 
 
-
 urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html"), name = 'index'),
     path('game/', views.index),
@@ -19,5 +18,7 @@ urlpatterns = [
     path('progress/', views.ProgressView.as_view(), name ='progress'),
     path('exercise/', views.InputExerciseView.as_view(), name='exerciseinput'),
     path('forum_post/', views.PostForumView.as_view(), name='forumpost'),
-    path('forum/', views.ForumView.as_view(), name='forum')
+    path('forum/', views.ForumView.as_view(), name='forum'),
+    # path('location_test/', views.GymMapView.as_view(), name='location'), # have to pay??? hell no
+    path('our-music-choice/', views.music, name = 'music'),
 ]

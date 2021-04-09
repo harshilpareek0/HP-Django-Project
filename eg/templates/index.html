@@ -3,11 +3,12 @@
 
 {% block content %}
 {% load socialaccount %}
-{% providers_media_js %}
+<!-- {% providers_media_js %} -->
+
 <html>
   <head>
     <title>Google Registration</title>
-    <title>Facebook Registration</title>
+    <!-- <title>Facebook Registration</title>-->
   </head>
   <body>
   <h1>Exercise Gamification</h1>
@@ -46,7 +47,7 @@
  
   {% else %}
   <a href="{% provider_login_url 'google' %}">Login with Google</a>
-  <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Facebook Connect</a>
+  <!-- <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Facebook Connect</a>-->
   {% endif %}
 
   </body>

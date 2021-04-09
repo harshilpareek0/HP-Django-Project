@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{% block content %}
+
+<h1>Our Music Choice</h1>>
+<strong>This is our artist of the week! Listen to these previews and get inspired!</strong>
+
+{% if results %}
+<div class="container bg-dark p-2">
+{% for song in results %}
+
+<ol class="list-group">
+    <li class="list-group-item bg-info text-center"><h3 class = "text-white" >{{song.name}}</h3></li>
+    <li class="list-group-item"><a href='{{song.preview_url}}'><button type = "button" class = "btn btn-success btn-lg mt-1">PLAY SONG</button></a></button></li>
+    <li class="list-group-item"><img src = "{{song.album.images.0.url}}" class = "img-fluid img=thumbnail" alt=""></li>
+</ol>
+
+{% endfor%}
+
+</div>
+{% endif %}
+
+{% endblock %}

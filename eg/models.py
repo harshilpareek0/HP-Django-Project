@@ -6,9 +6,10 @@ from django.urls import reverse
 # from django.contrib.auth.models import AbstractUser
 # from django.core.validators import RegexValidator
 from django.db import models
-
 from django.contrib.auth.models import User
 # from django.utils.translation import gettext_lazy as _
+
+from django.db.models.signals import post_save
 
 # Create your models here.
 class Profile(models.Model):
@@ -22,6 +23,16 @@ class Profile(models.Model):
     #image = models.ImageField(default='x.jpg')   
 
 
+
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
 
 # class CustomUser(AbstractUser):
 #     display_name = models.CharField(verbose_name=_("Display name"), max_length=30, help_text=_("Will be shown e.g. when commenting"))
@@ -66,3 +77,8 @@ class Posts(models.Model):
     post_text = models.CharField(max_length=1000)
     def get_absolute_url(self):
         return reverse('forum')
+
+# class GymMap(models.Model):
+#     location = models.CharField(max_length=30, blank=True)
+#     def get_absolute_url(self):
+#         return reverse('location_test')

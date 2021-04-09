@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from .models import Profile
 from .models import Exercise
 from .models import Posts
+# from .models import GymMap
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.views.generic import TemplateView
@@ -9,9 +10,13 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse, reverse_lazy
 from .forms import EditProfileForm
+#from .forms import UserProfileForm
 from django.shortcuts import render
 from django.template import loader
 from math import floor
+
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
@@ -41,6 +46,7 @@ class ProfileInputView(CreateView):
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
+    #form_class = UserProfileForm
     template_name = 'edit_profile.html'
     success_url = reverse_lazy('index')
     def get_object(self):
@@ -78,3 +84,27 @@ class ForumView(generic.ListView):
     def get_queryset(self):
         return Posts.objects.all()
 
+def update_profile(request, user_id):
+    user = User.objects.get(pk=user_id)
+    user.save()
+
+# class LocationView(generic.UpdateView):
+#     form_class = UserProfileForm
+#     template_name = 'location_test.html'
+#     success_url = reverse_lazy('index')
+#     def get_object(self):
+#         return self.request.user
+
+
+# class GymMapView(generic.CreateView):
+#     model = GymMap
+#     template_name = 'location_test.html'
+#     fields = ['location']
+
+def music(request): 
+    boogie_uri = 'spotify:artist:31W5EY0aAly4Qieq6OFu6I'
+    spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = '7bf326e10aca4f7284dc44c36817c6e3', client_secret = 'ff31284598a940cf999ccf42fdbf4d16'))
+    #results = spotify.album(album_uri)
+    results = spotify.artist_top_tracks(boogie_uri)
+    songs_results = results['tracks'][:20]
+    return render(request,'our-music-choice.html',{"results":songs_results})
