@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',#
     'allauth.socialaccount',#
     'allauth.socialaccount.providers.google',#
-    'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.facebook',
     'bootstrap4'
 ]
 
@@ -157,7 +157,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 5  # 3 for heroku, 4 for 127.0.0.1:8000, 5 for localhost:8000
+SITE_ID = 4  # 3 for heroku, 4 for 127.0.0.1:8000, 5 for localhost:8000
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
