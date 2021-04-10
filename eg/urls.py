@@ -15,12 +15,12 @@ urlpatterns = [
     #path('password/', auth_views.PasswordChangeView.as_view(template_name='change-password.html'), name = 'change_password')
     path('password/', PasswordsChangeView.as_view(template_name='change-password.html'), name = 'change_password'),
     path('register/', UserRegisterView.as_view(), name = 'register'),
-    path('progress/', views.ProgressView, name ='progress'),
-    path('exercise/', views.InputExerciseView.as_view(), name='exerciseinput'),
     # path('forum_post/', views.PostForumView.as_view(), name='forumpost'),
     # path('forum/', views.ForumView.as_view(), name='forum'),
     # path('location_test/', views.GymMapView.as_view(), name='location'), # have to pay??? hell no
     path('our-music-choice/', views.music, name = 'music'),
+    path('progress/<int:userid>/', views.ProgressView.as_view(), name ='progress'),
+    path('exercise/', views.InputExerciseView, name='exerciseinput'),
     path('forum_post/', views.PostForumView, name='forumpost'),
     path('forum/', views.ForumView.as_view(), name='forum'),
     path('make_reply/<int:pn>/', views.ReplyView, name='makereply'),
