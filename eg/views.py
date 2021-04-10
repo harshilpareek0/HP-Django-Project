@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Profile
 from .models import Exercise
 from .models import Posts
@@ -9,9 +9,8 @@ from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse, reverse_lazy
-from .forms import EditProfileForm
-#from .forms import UserProfileForm
-from django.shortcuts import render
+from .forms import EditProfileForm, PostForm, ReplyForm
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from math import floor
 
@@ -66,17 +65,37 @@ class InputExerciseView(generic.CreateView):
 class ProgressView(generic.TemplateView):
     template_name = 'progress.html'
     def get_context_data(self, **kwargs):
-        progress = (Exercise.objects.count() % 10) * 100
+        progress = (Exercise.objects.filter(exerciser_name=Profile.user.username).count() % 10) * 100
         progress_percentage = progress / 10
         level = floor(Exercise.objects.count() / 10)
         context = super(ProgressView, self).get_context_data(**kwargs)
         context.update({'progress': progress, 'progress_percentage': progress_percentage, 'level':level})
         return context
 
-class PostForumView(generic.CreateView):
-    model = Posts
-    template_name = 'forum_post.html'
-    fields = ['post_text']
+def PostForumView(request):
+    form = PostForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.post_maker = request.user
+            obj.post_number = Posts.objects.count() + 1
+            obj.save()
+            form = PostForm()
+            return redirect('/forum/')
+    return render(request, 'forum_post.html', {'form': form})
+
+def ReplyView(request, pn):
+    form = ReplyForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.reply_maker = request.user
+            obj.post = Posts.objects.filter(post_number=pn)[0]
+            request.POST.get('reply_text')
+            obj.save()
+            form = ReplyForm()
+            return redirect('/forum/')
+    return render(request, 'forum_post.html', {'form': form})
 
 class ForumView(generic.ListView):
     context_object_name = 'posts'
@@ -108,3 +127,6 @@ def music(request):
     results = spotify.artist_top_tracks(boogie_uri)
     songs_results = results['tracks'][:20]
     return render(request,'our-music-choice.html',{"results":songs_results})
+def LikeView(request, pn):
+    Posts.objects.filter(post_number=pn).update(likes= Posts.objects.filter(post_number=pn)[0].likes + 1)
+    return HttpResponseRedirect(reverse('forum'))
