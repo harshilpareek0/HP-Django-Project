@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
-from .models import Posts, Replies
+from .models import Posts, Replies, Exercise
 from django import forms
 
 
@@ -30,3 +30,8 @@ class ReplyForm(forms.ModelForm):
     class Meta:
         model = Replies
         fields = ['reply_text']
+
+class ExerciseForm(forms.ModelForm):
+    class Meta:
+        model = Exercise
+        fields = ['exercise_name']

@@ -8,7 +8,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse, reverse_lazy
-from .forms import EditProfileForm, PostForm, ReplyForm
+from .forms import EditProfileForm, PostForm, ReplyForm, ExerciseForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from math import floor
@@ -52,15 +52,21 @@ class UserRegisterView(generic.CreateView):
     def get_success_url(self):
         return reverse('index')
 
-class InputExerciseView(generic.CreateView):
-    model = Exercise
-    template_name = 'exercise.html'
-    fields = ['exercise_name']
+def InputExerciseView(request):
+    form = ExerciseForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.exerciser_name = request.user
+            obj.save()
+            form = ExerciseForm()
+            return redirect('/progress/')
+    return render(request, 'progress.html', {'form': form})
 
 class ProgressView(generic.TemplateView):
     template_name = 'progress.html'
     def get_context_data(self, **kwargs):
-        progress = (Exercise.objects.filter(exerciser_name=Profile.user.username).count() % 10) * 100
+        progress = (Exercise.objects.filter(exerciser_name=Profile.user).count() % 10) * 100
         progress_percentage = progress / 10
         level = floor(Exercise.objects.count() / 10)
         context = super(ProgressView, self).get_context_data(**kwargs)
