@@ -59,7 +59,7 @@ class Profile(models.Model):
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
 class Exercise(models.Model):
-    exerciser_name = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    exerciser_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     exercise_name = models.CharField(max_length=200)
     def get_absolute_url(self):
         return reverse('progress')

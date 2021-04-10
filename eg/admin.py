@@ -49,8 +49,9 @@
 
 from django.contrib import admin
 
-from .models import Profile, Replies, Posts
+from .models import Profile, Replies, Posts, Exercise
 
 admin.site.register(Profile)
 admin.site.register(Replies)
 admin.site.register(Posts)
+admin.site.register(Exercise)
