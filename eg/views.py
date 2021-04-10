@@ -69,7 +69,7 @@ class ProgressView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         progress = (Exercise.objects.filter(exerciser_name=self.kwargs['userid']).count() % 10) * 100
         progress_percentage = progress / 10
-        level = floor(Exercise.objects.count() / 10)
+        level = floor(Exercise.objects.filter(exerciser_name=self.kwargs['userid']).count() / 10)
         context = super(ProgressView, self).get_context_data(**kwargs)
         context.update({'progress': progress, 'progress_percentage': progress_percentage, 'level':level})
         return context
