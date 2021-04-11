@@ -1,22 +1,26 @@
-{% load bootstrap4 %}
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 <blockquote class="blockquote text-center">
     {% if posts %}
     <ul>
         {% for post in posts %}
-        <li>Post {{post.post_number}}, Post by {{post.post_maker}}: </li>
-        <p>{{post.post_text}}</p>
+        <fieldset class="border primary-border">
+        <p class="text-left">Post {{post.post_number}}, Post by <a href="/profile_view/{{post.post_maker.id}}">{{post.post_maker}}</a>:</p>
+        <p style="width: 200px">{{post.post_text}}</p>
+        <p class="text-left text-info">Likes: {{post.likes}}</p>
+        <p class="text-left"><a href="/make_reply/{{post.post_number}}" class="text-warning">Make a reply</a> or <a href="/like/{{post.post_number}}">like</a></p>
         {% if not post.replies.all %}
-        <p>No replies yet</p>
+        <p style="width: 250px">No replies yet</p>
         {% else %}
             {% for reply in post.replies.all %}
-        <DD><li>reply by {{reply.reply_maker}} : {{reply.reply_text}}</li></DD>
+        <p style="width: 250px">reply by {{reply.reply_maker}} : {{reply.reply_text}}</p>
             {% endfor %}
         {% endif %}
-        <p>Likes: {{post.likes}}</p>
-        <p> Make a <a href="/make_reply/{{post.post_number}}"> reply</a></p>
-        <p><a href="/like/{{post.post_number}}"> like</a></p>
+        </fieldset>
         {% endfor %}
+        <p><a href="/"> go back to the index page</a></p>
     </ul>
 </blockquote>
 {% else %}

@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<blockquote class="blockquote text-center">
+    {% if profile_info %}
+    <ul>
+        {% for profile in profile_info %}
+        <p class="text-left">User Name: {{profile.user}}</p>
+        <p class="text-left">User Bio: {{profile.bio}}</p>
+        <p class="text-left">Date of Birth: {{profile.date_of_birth}}</p>
+        {% endfor %}
+        <p><a href="/forum/"> go back to forums</a></p>
+    </ul>
+</blockquote>
+{% else %}
+<p>No such profile exists</p>
+{% endif %}
