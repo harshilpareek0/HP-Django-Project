@@ -135,5 +135,18 @@ def music(request):
     songs_results = results['tracks'][:20]
     return render(request,'our-music-choice.html',{"results":songs_results})
 def LikeView(request, pn):
-    Posts.objects.filter(post_number=pn).update(likes= Posts.objects.filter(post_number=pn)[0].likes + 1)
+    Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likes + 1)
     return HttpResponseRedirect(reverse('forum'))
+
+class ForumProfileView(generic.ListView):
+    context_object_name = 'profile_info'
+    template_name = 'view_profile.html'
+    def get_context_data(self, **kwargs):
+        progress = (Exercise.objects.filter(exerciser_name=self.kwargs['userid']).count() % 10) * 100
+        progress_percentage = progress / 10
+        level = floor(Exercise.objects.filter(exerciser_name=self.kwargs['userid']).count() / 10)
+        context = super(ForumProfileView, self).get_context_data(**kwargs)
+        context.update({'progress': progress, 'progress_percentage': progress_percentage, 'level':level})
+        return context
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.kwargs['userid'])
