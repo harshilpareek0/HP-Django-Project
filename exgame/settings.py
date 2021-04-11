@@ -86,26 +86,26 @@ WSGI_APPLICATION = 'exgame.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # Database with Postgres https://www.youtube.com/watch?v=ZgRkGfoy2nE&ab_channel=VeryAcademy
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'exgameDB',
-        'USER': 'postgres',
-        'PASSWORD': 'bball@Po01',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-        'DISABLE_SERVER_SIDE_CURSORS': True,
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'exgameDB',
+#         'USER': 'postgres',
+#         'PASSWORD': 'bball@Po01',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#         'DISABLE_SERVER_SIDE_CURSORS': True,
+#     }
+# }
 
 
 # Password validation
@@ -158,7 +158,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 4  # 3 for heroku, 4 for 127.0.0.1:8000, 5 for localhost:8000
+SITE_ID = 5 
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
