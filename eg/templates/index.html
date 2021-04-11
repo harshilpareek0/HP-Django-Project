@@ -33,8 +33,15 @@
             <h5 class="card-title">{{user.username}}</h5>
               <p class="card-text">{{user.profile.bio}}</p>
               <p class="card-text"><small class = "text-muted"> Joined {{user.date_joined}}</small></p>
+
+              {% if user.profile.id %}
               
-              <a href="#" class="btn btn-primary">Visit Profile</a> 
+              <a href="{% url 'show_profile_page' user.profile.id %} " class="btn btn-primary">Visit Profile</a> 
+              
+              {%else%}
+              <a href="{% url 'create_profile_page'%} " class="btn btn-primary">Create Profile</a> 
+
+              {% endif %}
               <!-- ^^^In the future this should take you to their public facing profile page -->
               </div>
               </div>

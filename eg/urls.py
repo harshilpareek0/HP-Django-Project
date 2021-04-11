@@ -1,7 +1,7 @@
 from django.urls import include, path
 from django.views.generic import TemplateView
 from . import views
-from .views import UserRegisterView, UserEditView, PasswordsChangeView,InputExerciseView
+from .views import UserRegisterView, UserEditView, PasswordsChangeView,InputExerciseView,ShowProfilePageView,CreateProfilePageView
 from django.contrib.auth import views as auth_views
 
 
@@ -19,5 +19,7 @@ urlpatterns = [
     path('progress/', views.ProgressView.as_view(), name ='progress'),
     path('exercise/', views.InputExerciseView.as_view(), name='exerciseinput'),
     path('forum_post/', views.PostForumView.as_view(), name='forumpost'),
-    path('forum/', views.ForumView.as_view(), name='forum')
+    path('forum/', views.ForumView.as_view(), name='forum'),
+    path('<int:pk>/profile/', ShowProfilePageView.as_view(), name='show_profile_page'),
+    path('create_profile_page/', CreateProfilePageView.as_view(), name='create_profile_page'),
 ]
