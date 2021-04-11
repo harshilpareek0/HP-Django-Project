@@ -1,7 +1,7 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+{% load static %}
 <blockquote class="blockquote text-center">
     {% if profile_info %}
     <ul>
@@ -9,6 +9,18 @@
         <p class="text-left">User Name: {{profile.user}}</p>
         <p class="text-left">User Bio: {{profile.bio}}</p>
         <p class="text-left">Date of Birth: {{profile.date_of_birth}}</p>
+        <p class="text-left"><img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100"></p>
+        <p class="text-left">{{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
+        <p class="text-left">{{profile.user}}'s level is {{level}}</p>
+        {% if level > 4 %}
+        <p class="text-left">Bronze Trophy Earned <img src="{% static 'eg/images/bronze.png' %}" width="150" height="150"></p>
+        {% endif %}
+        {% if level > 9 %}
+        <p class="text-left"> Silver Trophy Earned <img src="{% static 'eg/images/silver.png' %}" width="150" height="150"></p>
+        {% endif %}
+        {% if level > 14 %}
+        <p class="text-left"> Gold Trophy Earned <img src="{% static 'eg/images/gold.png' %}" width="150" height="150"></p>
+        {% endif %}
         {% endfor %}
         <p><a href="/forum/"> go back to forums</a></p>
     </ul>
