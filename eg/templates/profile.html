@@ -14,7 +14,8 @@
 
 
 {% load bootstrap4 %}
-
+{% block content %}
+          
 <blockquote class="blockquote text-center">
     {% if latest_profile_list %}
     <ul>
@@ -26,3 +27,4 @@
 {% else %}
 <p>No profiles are available.</p>
 {% endif %}
+{% endblock content %}

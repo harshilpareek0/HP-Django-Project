@@ -52,6 +52,7 @@
 
  
   {% else %}
+  <link rel="stylesheet" type ="text/css" href="{% static 'style.css' %}" class = "center">
   <a href="{% provider_login_url 'google' %}">Login with Google</a>
   {% endif %}
 
