@@ -2,6 +2,17 @@ from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 from .models import Posts, Replies, Exercise
 from django import forms
+from eg.models import Profile
+
+class ProfilePageForm(forms.ModelForm):
+        class Meta:
+                model = Profile
+                fields = ('bio', 'profile_pic', 'date_of_birth' )
+                widgets = {
+                        'bio': forms.Textarea(attrs={'class': 'form-control'}),
+                        #'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
+                        'date_of_birth': forms.DateInput(attrs={'class': 'form-control'})
+                }
 
 
 class EditProfileForm(UserChangeForm):
