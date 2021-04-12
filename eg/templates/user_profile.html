@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{% load static%}
+
+{% block content %}
+{% load socialaccount %}
+
+<h1> User Profile</h1>
+
+  <div class="card mb-3">
+    <div class = "row no-gutters">
+      <div class = "col-md-2">
+        {%if user.profile.profile_pic.url%}
+        <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
+        {% else %}
+        <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
+        {%endif%}
+        </div>
+        <div class= "col-md-10">
+          <div class="card-body">
+            <h5 class="card-title">{{page_user.username}}</h5>
+              <p class="card-text">{{page_user.bio}}</p>
+              <p class="card-text"><small class = "text-muted"> Joined {{page_user.date_joined}}</small></p>
+              
+              <a href="{% url 'show_profile_page' user.profile.id %} " class="btn btn-primary">Visit Profile</a> 
+              <!-- ^^^In the future this should take you to their public facing profile page -->
+              </div>
+              </div>
+    </div>
+  </div>
+
+{% endblock %}

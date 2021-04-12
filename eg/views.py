@@ -5,18 +5,29 @@ from .models import Posts
 # from .models import GymMap
 from django.views import generic
 from django.views.generic.edit import CreateView
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,DetailView, CreateView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse, reverse_lazy
 from .forms import EditProfileForm, PostForm, ReplyForm, ExerciseForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
+from .forms import EditProfileForm, ProfilePageForm
+from django.shortcuts import render, get_object_or_404
 from django.template import loader
 from math import floor
-
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+
+class CreateProfilePageView(CreateView):
+    model = Profile
+    #form_class = ProfilePageForm
+    template_name = "create_user_profile_page.html"
+    fields = '__all__'
+
+    def form_valid(self, form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
 
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
@@ -150,3 +161,14 @@ class ForumProfileView(generic.ListView):
         return context
     def get_queryset(self):
         return Profile.objects.filter(user=self.kwargs['userid'])
+
+class ShowProfilePageView(DetailView):
+    model = Profile
+    template_name = 'user_profile.html'
+
+    def get_context_data(self,*args,**kwargs):
+       user=Profile.objects.all()
+       context= super(ShowProfilePageView,self).get_context_data(*args,**kwargs)
+       page_user = get_object_or_404(Profile,id = self.kwargs['pk'])
+       context["page_user"] = page_user
+       return context
