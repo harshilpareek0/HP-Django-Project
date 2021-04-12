@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': 'exgameDB',
         'USER': 'postgres',
         'PASSWORD': 'bball@Po01',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432',
         'DISABLE_SERVER_SIDE_CURSORS': True,
     }
@@ -158,7 +158,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 5 
+SITE_ID = 4 
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
