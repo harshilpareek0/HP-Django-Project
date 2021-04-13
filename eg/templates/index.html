@@ -12,16 +12,72 @@
   <h1>Exercise Gamification</h1>
   <br></br>
   <br></br>
-  {% if user.is_authenticated %}
-  <h3>Welcome {{ user.first_name }}</h3>
-  <br></br>
 
-  <p> Would you like to make a <a href="/forum_post"> post?</a></p>
+  {% if user.is_authenticated %}
+  <div class="ui-bg-cover ui-bg-overlay-container text-white" style="background-color: #3A3B3C;">
+    <div class="ui-bg-overlay bg-dark opacity-50"></div>
+    <div class="container">
+      <div class="text-center py-5">
+        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="ui-w-100 rounded-circle">
+
+        <div class="col-md-8 col-lg-6 col-xl-5 p-0 mx-auto">
+          <h4 class="font-weight-bold my-4">Welcome, {{ user.first_name }}!</h4>
+
+          <div class="opacity-75 mb-4">
+            {{user.profile.bio}}
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a class="d-inline-block text-white">
+            Joined {{user.date_joined}}
+          </a>
+        </div>
+        <!-- progress bar can go here? -->
+        <div class= "text-align=center">
+          <div class="card-body">
+            {% if user.profile.id %}
+              
+            <a href="{% url 'show_profile_page' user.profile.id %} " class="btn btn-primary"> Edit Profile</a> 
+              
+            {%else%}
+            <a href="{% url 'create_profile_page'%} " class="btn btn-primary">Create Profile</a> 
+
+            {% endif %}
+              <!-- ^^^In the future this should take you to their public facing profile page -->
+            </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="ui-bg-overlay-container">
+      <div class="ui-bg-overlay bg-dark opacity-25"></div>
+      <ul class="nav nav-tabs tabs-alt justify-content-center border-transparent">
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/forum_post">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/exercise">Exercises</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/progress/{{user.id}}">Progress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/forum/">Forum</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- <h3 style = "text-align:center">Welcome {{ user.first_name }}</h3>
+  <br></br> -->
+  
+  <!-- <p> Make a <a href="/forum_post"> post</a></p>
   <p> Input  <a href="/exercise"> exercises </a></p>
   <p> View <a href="/progress/{{user.id}}"> progress</a></p>
-  <p> Visit <a href="/forum/"> Forums </a></p>
+  <p> Visit <a href="/forum/"> Forums </a></p> -->
 
-  <div class="card mb-3">
+  <!-- <div class="card mb-3">
     <div class = "row no-gutters">
       <div class = "col-md-2">
         {%if user.profile.profile_pic.url%}
@@ -44,11 +100,10 @@
               <a href="{% url 'create_profile_page'%} " class="btn btn-primary">Create Profile</a> 
 
               {% endif %}
-              <!-- ^^^In the future this should take you to their public facing profile page -->
               </div>
               </div>
     </div>
-  </div>
+  </div> -->
 
  
   {% else %}
