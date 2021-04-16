@@ -17,11 +17,15 @@ from django.db.models.signals import post_save
 class Profile(models.Model):
     user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
     bio = models.TextField(default = "Who Are You?")
-    profile_pic = models.ImageField(null=True, blank = True, upload_to="images/profile/")
+    profile_pic = models.ImageField(null=True, blank = True, upload_to="images/profile/", default="static/exgame/images/default_image.png")
+    #profile_pic = models.ImageField(null=True, blank = True)
     date_of_birth = models.DateField(verbose_name=("Date of birth"), blank=True, null=True)
 
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('index')
     #image = models.ImageField(default='x.jpg')   
 
 
@@ -77,9 +81,9 @@ class Exercise(models.Model):
         return reverse('progress')
 
 class Posts(models.Model):
-    post_number = models.IntegerField(default=0)
+    post_number = models.IntegerField(default=0, primary_key=True)
     post_maker = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    post_text = models.CharField(max_length=1000)
+    post_text = models.CharField(max_length=140)
     likes = models.IntegerField(default=0)
     class Meta:
         ordering = [F('likes').desc(nulls_last=True)]
@@ -91,6 +95,6 @@ class Posts(models.Model):
 class Replies(models.Model):
     post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name="replies")
     reply_maker = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    reply_text = models.CharField(max_length=1000)
+    reply_text = models.CharField(max_length=140)
     def get_absolute_url(self):
         return reverse('forum')

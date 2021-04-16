@@ -1,0 +1,17 @@
+li a {
+    color: mediumpurple;
+}
+
+body {
+
+    background: white url("exgame/images/lifting.gif") no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border-top: 1px solid #ddd;
+    border-radius: 1;
+    color: #fff;
+}
