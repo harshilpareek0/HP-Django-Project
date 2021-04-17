@@ -18,6 +18,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
     bio = models.TextField(default = "Who Are You?")
     profile_pic = models.ImageField(null=True, blank = True, upload_to="images/profile/", default="static/exgame/images/default_image.png")
+    #profile_pic = models.ImageField(null=True, blank = True)
     date_of_birth = models.DateField(verbose_name=("Date of birth"), blank=True, null=True)
 
     def __str__(self):
