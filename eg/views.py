@@ -19,11 +19,17 @@ from math import floor
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'edit_profile_page.html'
+    fields = ['bio', 'profile_pic', 'date_of_birth']
+    success_url = reverse_lazy('index')
+
 class CreateProfilePageView(CreateView):
     model = Profile
-    #form_class = ProfilePageForm
+    form_class = ProfilePageForm
     template_name = "create_user_profile_page.html"
-    fields = '__all__'
+    #fields = '__all__'
 
     def form_valid(self, form):
         form.instance.user=self.request.user
