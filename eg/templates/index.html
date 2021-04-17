@@ -9,11 +9,37 @@
     <title>Google Registration</title>
   </head>
   <body>
-  <h1>Exercise Gamification</h1>
+  <h1>Get Swole Or Die Trying</h1>
   <br></br>
   <br></br>
   {% if user.is_authenticated %}
-  <h3>Welcome {{ user.first_name }}</h3>
+
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" a href="/forum_post">Make A Post</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" a href="/exercise">Input Excercise</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" a href="/progress/{{user.id}}">View Progress</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" a href="/forum/">View Fourm</a>
+    </li>
+  </ul>
+
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome {{ user.first_name }}</h1>
+    <p class="lead">This is the home page where you can make a post, view profiles and input your excercises</p>
+    <hr class="my-4">
+    <p>This Excercise Gamification Web App was constructed for CS 3240</p>
+    {% if user.profile.id %}          
+    <a href="{% url 'show_profile_page' user.profile.id %} " class="btn btn-primary btn-lg">Visit Profile</a> 
+    {%else%}
+    <a href="{% url 'create_profile_page'%} " class="btn btn-primary btn-lg">Create Profile</a>
+    {% endif %} 
+  </div>
   <br></br>
 
   <p> Would you like to make a <a href="/forum_post"> post?</a></p>
