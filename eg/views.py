@@ -117,8 +117,9 @@ class ForumView(generic.ListView):
     def get_queryset(self):
         return Posts.objects.all()
 
-def LikeView(request, pn):
-    Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likes + 1)
+def LikeView(request, pn, pk):
+    Posts.objects.filter(post_number=pn)[0].likers.add(User.objects.get(id=pk))
+    Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likers.count())
     return HttpResponseRedirect(reverse('forum'))
 
 class ForumProfileView(generic.ListView):

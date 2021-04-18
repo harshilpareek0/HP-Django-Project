@@ -10,7 +10,7 @@
         <p class="text-left">Post {{post.post_number}}, Post by <a href="/profile_view/{{post.post_maker.id}}">{{post.post_maker}}</a>:</p>
         <p style="width: 200px">{{post.post_text}}</p>
         <p class="text-left text-info">Likes: {{post.likes}}</p>
-        <p class="text-left"><a href="/make_reply/{{post.post_number}}" class="text-warning">Make a reply</a> or <a href="/like/{{post.post_number}}">like</a></p>
+        <p class="text-left"><a href="/make_reply/{{post.post_number}}" class="text-warning">Make a reply</a> or <a href="/like/{{post.post_number}}/{{user.id}}">like</a></p>
         {% if not post.replies.all %}
         <p style="width: 250px">No replies yet</p>
         {% else %}
