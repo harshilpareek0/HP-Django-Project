@@ -85,6 +85,7 @@ class Posts(models.Model):
     post_maker = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     post_text = models.CharField(max_length=140)
     likes = models.IntegerField(default=0)
+    likers = models.ManyToManyField(User, related_name="liker")
     class Meta:
         ordering = [F('likes').desc(nulls_last=True)]
     def get_absolute_url(self):
