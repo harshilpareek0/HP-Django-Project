@@ -19,11 +19,17 @@ from math import floor
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'edit_profile_page.html'
+    fields = ['bio', 'profile_pic', 'date_of_birth']
+    success_url = reverse_lazy('index')
+
 class CreateProfilePageView(CreateView):
     model = Profile
-    #form_class = ProfilePageForm
+    form_class = ProfilePageForm
     template_name = "create_user_profile_page.html"
-    fields = '__all__'
+    #fields = '__all__'
 
     def form_valid(self, form):
         form.instance.user=self.request.user
@@ -107,7 +113,7 @@ def ReplyView(request, pn):
     if request.method == 'POST':
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.reply_maker = request.user
+            obj.repxly_maker = request.user
             obj.post = Posts.objects.filter(post_number=pn)[0]
             request.POST.get('reply_text')
             obj.save()
@@ -145,8 +151,11 @@ def music(request):
     results = spotify.artist_top_tracks(boogie_uri)
     songs_results = results['tracks'][:20]
     return render(request,'our-music-choice.html',{"results":songs_results})
-def LikeView(request, pn):
-    Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likes + 1)
+# def LikeView(request, pn):
+#     Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likes + 1)
+def LikeView(request, pn, pk):
+    Posts.objects.filter(post_number=pn)[0].likers.add(User.objects.get(id=pk))
+    Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likers.count())
     return HttpResponseRedirect(reverse('forum'))
 
 class ForumProfileView(generic.ListView):

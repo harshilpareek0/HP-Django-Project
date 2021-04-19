@@ -18,6 +18,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
     bio = models.TextField(default = "Who Are You?")
     profile_pic = models.ImageField(null=True, blank = True, upload_to="images/profile/", default="static/exgame/images/default_image.png")
+    #profile_pic = models.ImageField(null=True, blank = True)
     date_of_birth = models.DateField(verbose_name=("Date of birth"), blank=True, null=True)
 
     def __str__(self):
@@ -84,6 +85,7 @@ class Posts(models.Model):
     post_maker = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     post_text = models.CharField(max_length=140)
     likes = models.IntegerField(default=0)
+    likers = models.ManyToManyField(User, related_name="liker")
     class Meta:
         ordering = [F('likes').desc(nulls_last=True)]
     def get_absolute_url(self):

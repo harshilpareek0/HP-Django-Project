@@ -30,7 +30,7 @@ class EditProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username','first_name', 'last_name','email','is_active')
+        fields = ('username','first_name', 'last_name','email')
 
 class PostForm(forms.ModelForm):
     class Meta:
