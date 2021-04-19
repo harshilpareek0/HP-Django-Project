@@ -49,3 +49,33 @@ class FirstTestCase(TestCase):
         level = floor(Exercise.objects.filter(exerciser_name=self.test_user.id).count() / 10)
         self.assertEqual(1, level)
 
+
+    def test_create_profile_page_view(self):
+        response = self.client.get('/create_profile_page/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('create_user_profile_page.html')
+
+    def test_Index_view(self):
+        response = self.client.get('')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('index.html')
+
+    def test_user_register_view(self):
+        response = self.client.get('/register/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('register.html')
+
+    def test_input_exercise_view(self):
+        response = self.client.get('/exercise/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('exercise.html')
+
+    def test_post_forum_view(self):
+        response = self.client.get('/forum_post/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('forum_post.html')
+
+    def test_forum_view(self):
+        response = self.client.get('/forum/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('forum.html')
