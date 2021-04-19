@@ -10,6 +10,14 @@
         <p class="text-left">User Bio: {{profile.bio}}</p>
         <p class="text-left">Date of Birth: {{profile.date_of_birth}}</p>
         <p class="text-left"><img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100"></p>
+        <p class="text-left"> User Exercise history</p>
+        {% if exercise_list %}
+        {% for exercise, exercise_count in exercises.items %}
+        <p class="text-left">The user has done the exercise "{{exercise}}" {{exercise_count}} times</p>
+        {% endfor %}
+        {% else %}
+        <p class="text-left"> No history yet</p>
+        {% endif %}
         <p class="text-left">{{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
         <p class="text-left">{{profile.user}}'s level is {{level}}</p>
         {% if level > 4 %}
