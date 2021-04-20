@@ -37,12 +37,18 @@ class PostForm(forms.ModelForm):
         model = Posts
         fields = ['post_text']
 
+        widgets = {
+            'post_text': forms.Textarea(attrs={'class': 'form-control'})
+        }
+
 class ReplyForm(forms.ModelForm):
     class Meta:
         model = Replies
         fields = ['reply_text']
-
+        
 class ExerciseForm(forms.ModelForm):
     class Meta:
         model = Exercise
         fields = ['exercise_name']
+
+        widgets = {'exercise_name': forms.TextInput(attrs={'class': 'form-control'})}

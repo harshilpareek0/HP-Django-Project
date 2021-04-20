@@ -9,8 +9,7 @@
     <title>Google Registration</title>
   </head>
   <body>
-  <h1>Get Swole Or Die Trying</h1>
-  <br></br>
+  <h1 class="text-center">Get Swole Or Die Trying</h1>
   <br></br>
 
   {% if user.is_authenticated %}
@@ -44,10 +43,32 @@
   <br></br> -->
 
   <div class="ui-bg-cover ui-bg-overlay-container text-white" style="background-color: #3A3B3C;">
+    <div class="ui-bg-overlay-container">
+      <div class="ui-bg-overlay bg-dark opacity-25"></div>
+      <ul class="nav nav-tabs tabs-alt justify-content-center border-dark">
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/forum_post">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/exercise">Exercises</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/progress/{{user.id}}">Progress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/forum/">Forum</a>
+        </li>
+      </ul>
+    </div>
     <div class="ui-bg-overlay bg-dark opacity-50"></div>
     <div class="container">
       <div class="text-center py-5">
-        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="ui-w-100 rounded-circle">
+        {%if user.profile.profile_pic.url%}
+        <img src="{{request.user.profile.profile_pic.url}}" alt = "" class = "ui-w-100 rounded-circle">
+        {% else %}
+        <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
+        {%endif%}
+        <!-- <img src="" alt="" class="ui-w-100 rounded-circle"> -->
 
         <div class="col-md-8 col-lg-6 col-xl-5 p-0 mx-auto">
           <h4 class="font-weight-bold my-4">Welcome, {{ user.first_name }}!</h4>
@@ -67,7 +88,7 @@
           <div class="card-body">
             {% if user.profile.id %}
               
-            <a href="{% url 'show_profile_page' user.profile.id %} " class="btn btn-primary"> Edit Profile</a> 
+            <a href="{% url 'edit_profile_page' user.profile.id %} " class="btn btn-primary"> Edit Profile</a> 
               
             {%else%}
             <a href="{% url 'create_profile_page'%} " class="btn btn-primary">Create Profile</a> 
@@ -79,25 +100,9 @@
       </div>
     </div>
 
-    <div class="ui-bg-overlay-container">
-      <div class="ui-bg-overlay bg-dark opacity-25"></div>
-      <ul class="nav nav-tabs tabs-alt justify-content-center border-transparent">
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/forum_post">Posts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/exercise">Exercises</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/progress/{{user.id}}">Progress</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/forum/">Forum</a>
-        </li>
-      </ul>
-    </div>
+    
   </div>
-  
+
   <!-- <h3 style = "text-align:center">Welcome {{ user.first_name }}</h3>
   <br></br> -->
   

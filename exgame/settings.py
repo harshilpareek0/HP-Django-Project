@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',#
     'allauth.socialaccount.providers.google',#
     # 'allauth.socialaccount.providers.facebook',
-    'bootstrap4'
+    'bootstrap4',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [

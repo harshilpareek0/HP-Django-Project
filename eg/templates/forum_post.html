@@ -1,11 +1,18 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load crispy_forms_tags %}
+{% block title%} <h1 class="text-center">Ask questions, share routines, find a gym buddy </h1>{% endblock %}
+
 {% block content %}
-          
+
+<h4>ADD TO THE DISCUSSION</h4>
+<div class="form-group">
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form}}
+    {{form.as_p}}
     {% buttons %}
     <input type="submit" class="btn btn-outline-success"></inputbutton>
     {% endbuttons %}
 </form>
+</div>
 {% endblock content %}
