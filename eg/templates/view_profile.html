@@ -1,17 +1,51 @@
+{%extends 'base.html'%}
 {% block content %}
+
           
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 {% load static %}
+
+<h1> User Profile</h1>
+
 <blockquote class="blockquote text-center">
     {% if profile_info %}
     <ul>
         {% for profile in profile_info %}
-        <p class="text-left">User Name: {{profile.user}}</p>
-        <p class="text-left">User Bio: {{profile.bio}}</p>
-        <p class="text-left">Date of Birth: {{profile.date_of_birth}}</p>
+        <div class="card mb-3">
+            <div class = "row no-gutters">
+              <div class = "col-md-2">
+                {%if user.profile.profile_pic.url%}
+                <img class="card-img-top" src="{{profile.profile_pic.url}}" class = "rounded-circle" alt="Card image cap">
+                {% else %}
+                <!-- <img class="card-img-top" src="{% static 'eg/images/blue-box.jpg' %}" class = "rounded-circle" alt="Card image cap"> -->
+                <img class="card-img-top" src="{% static 'eg/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
+                {%endif%}
+                </div>
+                <div class= "col-md-10">
+                  <div class="card-body">
+                    <h5 class="card-title">{{profile.user.username}}</h5>
+                      <p class="card-text">{{profile.bio}}</p>
+                      <p class="card-text"><small class = "text-muted"> Born {{profile.date_of_birth}}</small></p>
+                      
+                      <!-- <a href="{% url 'profile_view' profile.user.id %} " class="btn btn-primary">Visit Profile</a>  -->
+                      <!-- ^^^In the future this should take you to their public facing profile page -->
+                      </div>
+                      </div>
+            </div>
+          </div>
+
+        <p class="text-left">Progress:</p>
         <p class="text-left"><img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100"></p>
+        <p class="text-left"> User Exercise history:</p>
+        {% if exercise_list %}
+        {% for exercise, exercise_count in exercises.items %}
+        <p class="text-left">The user has done the exercise "{{exercise}}" {{exercise_count}} times</p>
+        {% endfor %}
+        {% else %}
+        <p class="text-left"> No history yet</p>
+        {% endif %}
         <p class="text-left">{{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
         <p class="text-left">{{profile.user}}'s level is {{level}}</p>
         {% if level > 4 %}

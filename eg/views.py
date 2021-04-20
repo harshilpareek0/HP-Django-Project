@@ -159,14 +159,25 @@ def LikeView(request, pn, pk):
     return HttpResponseRedirect(reverse('forum'))
 
 class ForumProfileView(generic.ListView):
+    model = Profile
     context_object_name = 'profile_info'
     template_name = 'view_profile.html'
     def get_context_data(self, **kwargs):
+        user=Profile.objects.all()
         progress = (Exercise.objects.filter(exerciser_name=self.kwargs['userid']).count() % 10) * 100
+        exercise_list = Exercise.objects.filter(exerciser_name=self.kwargs['userid'])
+        exercises = dict()
+        for item in exercise_list.iterator():
+            if item.exercise_name not in exercises.keys():
+                exercises.update({item.exercise_name: 1})
+            else:
+                exercises[item.exercise_name] += 1
         progress_percentage = progress / 10
         level = floor(Exercise.objects.filter(exerciser_name=self.kwargs['userid']).count() / 10)
         context = super(ForumProfileView, self).get_context_data(**kwargs)
-        context.update({'progress': progress, 'progress_percentage': progress_percentage, 'level':level})
+        context.update({'progress': progress, 'progress_percentage': progress_percentage, 'level':level, 'exercise_list': exercise_list, 'exercises':exercises})
+        #page_user = get_object_or_404(Profile,id = self.kwargs['userid'])
+        #context["page_user"] = page_user
         return context
     def get_queryset(self):
         return Profile.objects.filter(user=self.kwargs['userid'])

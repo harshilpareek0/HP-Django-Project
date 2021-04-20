@@ -17,7 +17,7 @@ from django.db.models.signals import post_save
 class Profile(models.Model):
     user = models.OneToOneField(User, null = True, on_delete=models.CASCADE)
     bio = models.TextField(default = "Who Are You?")
-    profile_pic = models.ImageField(null=True, blank = True, upload_to="images/profile/", default="static/exgame/images/default_image.png")
+    profile_pic = models.ImageField(null=True, blank = True, upload_to="images/profile/", default="static/eg/images/default_image.png")
     #profile_pic = models.ImageField(null=True, blank = True)
     date_of_birth = models.DateField(verbose_name=("Date of birth"), blank=True, null=True)
 
@@ -26,6 +26,11 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse('index')
+
+    def get_profile_pic(self):
+        if self.profile_pic:
+            return self.profile_pic.url
+        return "static/eg/images/default_image.png"
     #image = models.ImageField(default='x.jpg')   
 
 
