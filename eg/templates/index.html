@@ -43,6 +43,23 @@
   <br></br> -->
 
   <div class="ui-bg-cover ui-bg-overlay-container text-white" style="background-color: #3A3B3C;">
+    <div class="ui-bg-overlay-container">
+      <div class="ui-bg-overlay bg-dark opacity-25"></div>
+      <ul class="nav nav-tabs tabs-alt justify-content-center border-dark">
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/forum_post">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/exercise">Exercises</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/progress/{{user.id}}">Progress</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white py-4" href="/forum/">Forum</a>
+        </li>
+      </ul>
+    </div>
     <div class="ui-bg-overlay bg-dark opacity-50"></div>
     <div class="container">
       <div class="text-center py-5">
@@ -83,23 +100,7 @@
       </div>
     </div>
 
-    <div class="ui-bg-overlay-container">
-      <div class="ui-bg-overlay bg-dark opacity-25"></div>
-      <ul class="nav nav-tabs tabs-alt justify-content-center border-transparent">
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/forum_post">Posts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/exercise">Exercises</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/progress/{{user.id}}">Progress</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white py-4" href="/forum/">Forum</a>
-        </li>
-      </ul>
-    </div>
+    
   </div>
 
   <!-- <h3 style = "text-align:center">Welcome {{ user.first_name }}</h3>
