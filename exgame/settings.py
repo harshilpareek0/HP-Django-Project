@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',#
     'allauth.socialaccount.providers.google',#
     # 'allauth.socialaccount.providers.facebook',
-    'bootstrap4'
+    'bootstrap4',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -155,7 +156,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 5
+SITE_ID = 7
 LOGIN_REDIRECT_URL = '/'
 
 SOCIALACCOUNT_PROVIDERS = {
