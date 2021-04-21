@@ -55,11 +55,6 @@ class FirstTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('create_user_profile_page.html')
 
-    def test_Index_view(self):
-        response = self.client.get('')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed('index.html')
-
     def test_user_register_view(self):
         response = self.client.get('/register/')
         self.assertEqual(response.status_code, 200)
