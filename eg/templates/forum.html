@@ -15,7 +15,7 @@
         <p style="width: 250px">No replies yet</p>
         {% else %}
             {% for reply in post.replies.all %}
-        <p style="width: 250px">reply by {{reply.reply_maker}} : {{reply.reply_text}}</p>
+            <p style="width: 250px">reply by {{reply.reply_maker}} : {{reply.reply_text}}</p>
             {% endfor %}
         {% endif %}
         </fieldset>
