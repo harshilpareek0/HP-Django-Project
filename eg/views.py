@@ -113,7 +113,7 @@ def ReplyView(request, pn):
     if request.method == 'POST':
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.repxly_maker = request.user
+            obj.reply_maker = request.user
             obj.post = Posts.objects.filter(post_number=pn)[0]
             request.POST.get('reply_text')
             obj.save()

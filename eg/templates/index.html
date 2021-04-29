@@ -63,9 +63,9 @@
     <div class="ui-bg-overlay bg-dark opacity-50"></div>
     <div class="container">
       <div class="text-center py-5">
-        <!-- {%if user.profile.profile_pic.url%} -->
-        <!-- <img class="card-img-top" src="{{request.user.profile.profile_pic.url}}" alt="" class="ui-w-100 rounded-circle"> -->
-        <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="ui-w-100 rounded-circle">
+        {%if user.profile.profile_pic.url%}
+          <img class="card-img-top" src="{{request.user.profile.profile_pic.url}}" alt="" class="ui-w-100 rounded-circle">
+        <!-- <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="ui-w-100 rounded-circle"> -->
         <!-- {%else%} -->
         <!-- <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap"> -->
         <!-- {%endif%} -->
