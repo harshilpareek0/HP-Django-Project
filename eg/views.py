@@ -9,7 +9,7 @@ from django.views.generic import TemplateView,DetailView, CreateView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse, reverse_lazy
-from .forms import EditProfileForm, PostForm, ReplyForm, ExerciseForm
+from .forms import EditProfileForm, PostForm, ReplyForm, ExerciseForm, EditProfilePageForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .forms import EditProfileForm, ProfilePageForm
@@ -21,9 +21,12 @@ from spotipy.oauth2 import SpotifyClientCredentials
 
 class EditProfilePageView(generic.UpdateView):
     model = Profile
+    form_class = EditProfilePageForm
     template_name = 'edit_profile_page.html'
-    fields = ['bio', 'profile_pic', 'date_of_birth']
+    #fields = ['bio', 'profile_pic', 'date_of_birth']
     success_url = reverse_lazy('index')
+    def get_object(self):
+        return self.request.user.profile
 
 class CreateProfilePageView(CreateView):
     model = Profile
