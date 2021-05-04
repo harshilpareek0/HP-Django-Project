@@ -48,13 +48,13 @@
         {% endif %}
         <p class="text-left">{{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
         <p class="text-left">{{profile.user}}'s level is {{level}}</p>
-        {% if level > 4 %}
+        {% if level > 0 %}
         <p class="text-left">Bronze Trophy Earned <img src="{% static 'eg/images/bronze.png' %}" width="150" height="150"></p>
         {% endif %}
-        {% if level > 9 %}
+        {% if level > 1 %}
         <p class="text-left"> Silver Trophy Earned <img src="{% static 'eg/images/silver.png' %}" width="150" height="150"></p>
         {% endif %}
-        {% if level > 14 %}
+        {% if level > 2 %}
         <p class="text-left"> Gold Trophy Earned <img src="{% static 'eg/images/gold.png' %}" width="150" height="150"></p>
         {% endif %}
         {% endfor %}
