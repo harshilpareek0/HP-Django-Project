@@ -87,7 +87,7 @@
           <div class="card-body">
             {% if user.profile.id %}
               
-            <a href="{% url 'profile_view' user.id %} " class="btn btn-primary"> View Profile</a> 
+            <a href="{% url 'view_own_profile' %} " class="btn btn-primary"> View Profile</a>
               
             {%else%}
             <a href="{% url 'create_profile_page'%} " class="btn btn-primary">Create Profile</a> 

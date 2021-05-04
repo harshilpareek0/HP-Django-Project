@@ -28,6 +28,7 @@ urlpatterns = [
     path('like/<int:pn>/<int:pk>/', views.LikeView, name='like'),
     path('profile_view/<int:userid>/', views.ForumProfileView.as_view(), name='profile_view'),
     path('progress/', views.ProgressView.as_view(), name ='progress'),
+    path('view_profile/', views.OwnProfileView.as_view(), name='view_own_profile'),
     path('exercise/', views.InputExerciseView, name='exerciseinput'),
     path('forum_post/', views.PostForumView, name='forumpost'),
     path('forum/', views.ForumView.as_view(), name='forum'),
