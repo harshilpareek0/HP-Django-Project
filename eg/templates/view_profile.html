@@ -10,23 +10,23 @@
 
 <blockquote class="blockquote text-center">
     {% if profile_info %}
-    <h1 style="margin-bottom: 25px;margin-left: 36px; font-size: 100px; color: #fbfcfd; text-align:center; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Your Current Level: {{level}}</h1>
+    <h1 style="margin-bottom: 25px;margin-left: 36px; font-size: 100px; color: #fbfcfd; text-align:center; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Current Level of user: {{level}}</h1>
     <ul>
         {% for profile in profile_info %}
         <div class="container">
-            {%if user.profile.profile_pic.url%}
-              <img class="card-img-top" src="{{request.user.profile.profile_pic.url}}" alt="" style="width:300px;height:300px;" class="ui-w-100 rounded-circle">
+            {%if profile.profile_pic.url%}
+              <img class="card-img-top" src="{{profile.profile_pic.url}}" alt="" style="width:300px;height:300px;" class="ui-w-100 rounded-circle">
             {%else%}
             <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" style="width:300px;height:300px;" class = "rounded-circle" alt="Card image cap">
             {%endif%}
 
-            <p style="color:#fbfcfd; margin: 15px 15px">Joined {{user.date_joined}}</p>
-            <h5 style="margin: 15px 15px; color: #fbfcfd; ">{{user.profile.bio}}</h5>
+            <p style="color:#fbfcfd; margin: 15px 15px">Joined {{profile.date_joined}}</p>
+            <h5 style="margin: 15px 15px; color: #fbfcfd; ">{{profile.bio}}</h5>
         </div>
 
 <div class = "container" style = "color:#fbfcfd">
   <p class="text-left" style = "font-size:40px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom:-0.20rem">PROGRESS:</p>
-  <p class="text-left" style ="font-style:italic">You have made {{progress_percentage}} % progress towards the next level</p>
+  <p class="text-left" style ="font-style:italic">The user {{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
  
   <p class="text-left"><img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100"></p>
 
