@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load crispy_forms_tags %}
-{% block title%} <h1 class="text-center">Ask questions, share routines, find a gym buddy </h1>{% endblock %}
+{% block title%} <h1 class="text-center" style="color:#fbfcfd">Ask questions, share routines, find a gym buddy </h1>{% endblock %}
 
 {% block content %}
 
-<h4>ADD TO THE DISCUSSION</h4>
+<h4 style="color: #fbfcfd">ADD TO THE DISCUSSION</h4>
 <div class="form-group">
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" style="color:#fbfcfd">
     {% csrf_token %}
     {{form.as_p}}
     {% buttons %}

@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-<h1 style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#fbfcfd">THE FORUM</h1>
-
+<h1 style= "font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:#fbfcfd; margin-left: 34px; font-size: 100px">THE FORUM</h1>
+<a class="btn" href="/forum_post" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 10px; outline: none; cursor: pointer; margin-left:40px">MAKE A POST</a>
 <blockquote class="blockquote text-center" style = "color: #fbfcfd">
     {% if posts %}
     <ul>
         {% for post in posts %}
-        <fieldset class="border primary-border">
-        <p class="text-left" style = "margin: 10px 10px 20px; font-size:larger">Post by <a href="/profile_view/{{post.post_maker.id}}" style = "color:#d37556 ">{{post.post_maker}}</a>:</p>
-        <p style="text-align:center">{{post.post_text}}</p>
-        <p class="text-left text-info" style = "margin:10px 10px 10px">Likes: {{post.likes}}</p>
-        <p class="text-left" style = "margin:10px 10px 10px"><a href="/make_reply/{{post.post_number}}" style = "color: #d37556 ">Make a reply</a> or <a href="/like/{{post.post_number}}/{{user.id}}" style = "color: #d37556 ">like</a></p>
+        <fieldset class="border primary-border" style="margin-top: 1.00rem">
+        <p class="text-left" style = "margin: 10px 10px 0; font-size:larger">Post by <a href="/profile_view/{{post.post_maker.id}}" style = "color:#d37556 ">{{post.post_maker}}</a></p>
+        <p class="text-left" style = "margin:0 10px 10px; color: #fbfcfd; font-size: medium" >Likes: {{post.likes}}</p>
+        <p class="text-left" style = "margin-left: .50rem">{{post.post_text}}</p>
+        <p class="text-left" style = "margin:10px 10px 10px"><a href="/make_reply/{{post.post_number}}" style = "color: #d37556; font-style:italic; font-size:small ">MAKE A REPLY</a> <br> <a href="/like/{{post.post_number}}/{{user.id}}" style = "color: #d37556;font-style:italic; font-size:small">LIKE POST</a></p>
         {% if not post.replies.all %}
         <p style="font-size: small">No replies yet</p>
         {% else %}
             {% for reply in post.replies.all %}
-            <a style="width: 250px">reply by <a href="/profile_view/{{reply.reply_maker.id}}" style = "color: #d37556 ">{{reply.reply_maker}}</a> : {{reply.reply_text}}</p>
+            <a>reply by <a href="/profile_view/{{reply.reply_maker.id}}" style = "color: #d37556;">{{reply.reply_maker}}</a> : {{reply.reply_text}}</p>
             {% endfor %}
         {% endif %}
         </fieldset>

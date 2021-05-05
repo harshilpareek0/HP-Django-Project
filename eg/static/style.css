@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 li a {
     color: mediumpurple;
@@ -5,7 +6,9 @@ li a {
 
 body {
 
-    background-color: #24252A;
+    background: white url("exgame/images/lifting.gif") no-repeat;
+    background-position: center top;
+    background-size: cover;
 }
 
 .list-group-item {

@@ -104,3 +104,4 @@ class Replies(models.Model):
     reply_text = models.CharField(max_length=140)
     def get_absolute_url(self):
         return reverse('forum')
+
