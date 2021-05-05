@@ -27,8 +27,21 @@
 <div class = "container" style = "color:#fbfcfd">
   <p class="text-left" style = "font-size:40px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom:-0.20rem">PROGRESS:</p>
   <p class="text-left" style ="font-style:italic">The user {{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
- 
-  <p class="text-left"><img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100"></p>
+ <div>
+     <img src="{% static 'eg/images/blue-box.jpg' %}" class="bar" width="{{progress}}" height="100">
+     <img src="{% static 'eg/images/grey-box.png' %}" class="outline" width="1000" height="100">
+ </div>
+    <style>
+          .bar
+           {
+             position: relative
+           }
+           .outline
+           {
+             position: absolute
+           }
+
+    </style>
 
  
   <p class="text-left" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:40px">TROPHIES EARNED:</p>

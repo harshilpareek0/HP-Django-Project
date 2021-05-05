@@ -37,7 +37,22 @@
           </div>
 
         <p class="text-left">Progress:</p>
-        <p class="text-left"><img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100"></p>
+        <div>
+            <img src="{% static 'eg/images/blue-box.jpg' %}" class="bar" width="{{progress}}" height="100">
+            <img src="{% static 'eg/images/grey-box.png' %}" class="outline" width="1000" height="100">
+        </div>
+
+        <style>
+            .bar
+            {
+                position: relative
+            }
+            .outline
+            {
+                position: absolute
+            }
+
+        </style>
         <p class="text-left"> Your Exercise history:</p>
         {% if exercise_list %}
         {% for exercise, exercise_count in exercises.items %}

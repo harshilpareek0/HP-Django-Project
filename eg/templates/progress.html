@@ -5,7 +5,24 @@
 {% block content %}
 <div>
     <ul>
-        <img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100">
+
+        <div>
+            <img src="{% static 'eg/images/blue-box.jpg' %}" class="bar" width="{{progress}}" height="100">
+            <img src="{% static 'eg/images/grey-box.png' %}" class="outline" width="1000" height="100">
+        </div>
+
+        <style>
+            .bar
+            {
+                position: relative
+            }
+            .outline
+            {
+                position: absolute
+            }
+
+        </style>
+
         <p>{{user.username}}, you have made {{progress_percentage}} % progress towards the next level</p>
         <p>Your level is {{level}}</p>
         {% if level > 0 %}
