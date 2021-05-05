@@ -8,15 +8,16 @@
         <img src="{% static 'eg/images/blue-box.jpg' %}" width="{{progress}}" height="100">
         <p>{{user.username}}, you have made {{progress_percentage}} % progress towards the next level</p>
         <p>Your level is {{level}}</p>
-        {% if level > 4 %}
+        {% if level > 0 %}
         <p>Bronze Trophy Earned <img src="{% static 'eg/images/bronze.png' %}" width="150" height="150"></p>
         {% endif %}
-        {% if level > 9 %}
+        {% if level > 1 %}
         <p> Silver Trophy Earned <img src="{% static 'eg/images/silver.png' %}" width="150" height="150"></p>
         {% endif %}
-        {% if level > 14 %}
+        {% if level > 2 %}
         <p> Gold Trophy Earned <img src="{% static 'eg/images/gold.png' %}" width="150" height="150"></p>
         {% endif %}
+        <p><a href="/exercise"> add another exercise?</a></p>
         <p><a href="/"> go back to the index page</a></p>
     </ul>
 </div>

@@ -18,16 +18,18 @@
         <p style="width: 250px">No replies yet</p>
         {% else %}
             {% for reply in post.replies.all %}
-            <p style="width: 250px">reply by {{reply.reply_maker}} : {{reply.reply_text}}</p>
+            <a style="width: 250px">reply by <a href="/profile_view/{{reply.reply_maker.id}}">{{reply.reply_maker}}</a> : {{reply.reply_text}}</p>
             {% endfor %}
         {% endif %}
         </fieldset>
         {% endfor %}
-        <p><a href="/"> go back to the index page</a></p>
     </ul>
 </blockquote>
 {% else %}
 <p>No posts are available.</p>
 {% endif %}
 
+<ul><p><a href="/"> go back to the index page</a></p></ul>
+
 {% endblock %}
+

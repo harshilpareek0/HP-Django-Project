@@ -185,6 +185,30 @@ class ForumProfileView(generic.ListView):
     def get_queryset(self):
         return Profile.objects.filter(user=self.kwargs['userid'])
 
+class OwnProfileView(generic.ListView):
+    model = Profile
+    context_object_name = 'profile_info'
+    template_name = 'view_own_profile.html'
+    def get_context_data(self, **kwargs):
+        progress = (Exercise.objects.filter(exerciser_name=self.request.user).count() % 10) * 100
+        exercise_list = Exercise.objects.filter(exerciser_name=self.request.user)
+        exercises = dict()
+        for item in exercise_list.iterator():
+            if item.exercise_name not in exercises.keys():
+                exercises.update({item.exercise_name: 1})
+            else:
+                exercises[item.exercise_name] += 1
+        progress_percentage = progress / 10
+        level = floor(Exercise.objects.filter(exerciser_name=self.request.user).count() / 10)
+        context = super(OwnProfileView, self).get_context_data(**kwargs)
+        context.update({'progress': progress, 'progress_percentage': progress_percentage, 'level':level, 'exercise_list': exercise_list, 'exercises':exercises})
+        #page_user = get_object_or_404(Profile,id = self.kwargs['userid'])
+        #context["page_user"] = page_user
+        return context
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
+
+
 class ShowProfilePageView(DetailView):
     model = Profile
     template_name = 'user_profile.html'
