@@ -32,6 +32,7 @@ class EditProfileForm(UserChangeForm):
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget = forms.HiddenInput(), required = False)
     #last_login = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
     #is_superuser = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
     #is_staff = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
@@ -42,7 +43,7 @@ class EditProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username','first_name', 'last_name','email')
+        fields = ('username','first_name', 'last_name','email', 'password')
 
 class PostForm(forms.ModelForm):
     class Meta:
