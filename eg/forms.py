@@ -4,6 +4,8 @@ from .models import Posts, Replies, Exercise, Profile
 from django import forms
 from eg.models import Profile
 
+YEARS = [x for x in range(1930,2021)]
+
 class ProfilePageForm(forms.ModelForm):
         class Meta:
                 model = Profile
@@ -11,8 +13,18 @@ class ProfilePageForm(forms.ModelForm):
                 widgets = {
                         'bio': forms.Textarea(attrs={'class': 'form-control'}),
                         #'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
-                        'date_of_birth': forms.DateInput(attrs={'class': 'form-control'})
+                        'date_of_birth': forms.SelectDateWidget(years = YEARS)
                 }
+
+class EditProfilePageForm(UserChangeForm):
+    #bio = forms.Text(attrs={'class': 'form-control'})
+    bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
+    profile_pic = forms.FileField()
+    date_of_birth = forms.DateField(widget=forms.SelectDateWidget(years = YEARS))
+    password = forms.CharField(widget = forms.HiddenInput(), required = False)
+    class Meta:
+        model = Profile
+        fields = ('bio', 'profile_pic', 'date_of_birth', 'password' )
 
 
 class EditProfileForm(UserChangeForm):

@@ -9,12 +9,27 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="eg/static/style.css">
     <title>Exercise Gamification</title>
   </head>
   
+  <!-- <body>
+    <header style="display:flex; justify-content:space-between; align-items:center;padding:30px 10%">
+      <h1 style = "font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: #fbfcfd"><a href="#">GET BIG</a></h1>
+      <nav>
+        <ul class = "nav_links" style = "list-style: none">
+          <li style ="display: inline-block;font-family:sans-serif; font-weight:500; font-size:16px;color:#fbfcfd; text-decoration:none"><a href="{% url 'profile_view' user.id %}"style ="font-family:sans-serif; font-weight:500; font-size:16px;color:#fbfcfd; text-decoration:none">Profile</a></li>
+          <li style ="display: inline-block;font-family:sans-serif; font-weight:500; font-size:16px;color:#fbfcfd; text-decoration:none"><a href="/forum"style ="font-family:sans-serif; font-weight:500; font-size:16px;color:#fbfcfd; text-decoration:none">Forum</a></li>
+          <li style ="display: inline-block;font-family:sans-serif; font-weight:500; font-size:16px;color:#fbfcfd; text-decoration:none"><a href="/progress"style ="font-family:sans-serif; font-weight:500; font-size:16px;color:#fbfcfd; text-decoration:none">Progress</a></li>
+        </ul>
+      </nav>
+      <a class="button" href="/edit_settings"><button>Settings</button></a>
+    </header>
+  </body> -->
+
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Get Big</a>
+    <a class="navbar-brand">Get Big</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,7 +41,9 @@
         <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-
+          <li class=nav-item>
+            <a class="nav-link" href="/forum">Forum</a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Profile
@@ -41,6 +58,10 @@
 
               {%endif%}
             </div>
+
+            <li class = "nav-item">
+              <a class = "nav-link" href="/our-music-choice"> Fire Artist! </a>
+            </li>
           </li>
         <li class = "nav-item">
             <a class = "nav-link" href="/accounts/logout"> Logout </a>
@@ -60,9 +81,7 @@
                 <a class = "nav-link" href="/register"> Register (Non-Google)</a>
             </li>
         {%endif%}
-        <li class = "nav-item">
-          <a class = "nav-link" href="/our-music-choice"> Fire Artist! </a>
-        </li>
+        
       </ul>
     </div>
   </nav>
@@ -70,7 +89,7 @@
   </div>
 </nav>
 
-<body>
+<body style="background-color: #455954">
   <style>
     #wrapper {
       width: 70%;     /* specify a width! */
@@ -90,7 +109,7 @@
           {% block content %}
           {% endblock content %}
       </h1>
-    </div>
+    </div> -->
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -110,7 +129,5 @@
           mix-blend-mode: difference;
       }
   </style>
-  <div id="footer">
-      Peter Shin goes to the University of Virginia. &copy; Copyright 2021 PSS9FP@VIRGINIA.EDU
-  </div>
+
 </html>

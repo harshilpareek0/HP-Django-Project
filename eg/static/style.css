@@ -1,12 +1,11 @@
+
 li a {
     color: mediumpurple;
 }
 
 body {
 
-    background: white url("exgame/images/lifting.gif") no-repeat;
-    background-position: center top;
-    background-size: cover;
+    background-color: #24252A;
 }
 
 .list-group-item {
