@@ -14,10 +14,18 @@
     <div class="content" style="color: #fbfcfd; position:absolute; top:50%; left:8%; transform:translatey(-50%);z-index:2">
       <small style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Welcome, {{user.first_name}}<small>
       <h1 style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size:80px;margin: 10px 0 30px; line-height:80px">Get Swole or <br>Die Trying</h1>
-      <a class="btn" href="/exercise" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">Let's Get Started</a>
+      <a class="btn" href="/exercise" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">Feed Your Progress</a>
+        <a class="btn" href="{% url 'profile_view' user.id %}" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">View Profile</a>
     </div>
+
   
-  
+    <div class="text-right py-5" >
+      {%if user.profile.profile_pic.url%}
+      <img src="{{request.user.profile.profile_pic.url}}" alt="" style="width:500px;height:600px;" class="ui-w-100 rounded-circle">
+      {% else %}
+      <img src="{% static '/exgame/images/default_image.png' %}" style="width:500px;height:600px;" class = "rounded-circle" alt="Card image cap">
+      {%endif%}
+    </div>
 
   
 
