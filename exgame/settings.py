@@ -44,11 +44,15 @@ INSTALLED_APPS = [
     'allauth',#
     'allauth.account',#
     'allauth.socialaccount',#
-    'allauth.socialaccount.providers.google',#
+    'allauth.socialaccount.providers.google', 
     # 'allauth.socialaccount.providers.facebook',
     'bootstrap4',
     'crispy_forms'
 ]
+
+# Google Login
+# Software License: apache
+# https://whizzoe.medium.com/in-5-mins-set-up-google-login-to-sign-up-users-on-django-e71d5c38f5d5
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

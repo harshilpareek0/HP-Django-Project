@@ -147,6 +147,8 @@ def update_profile(request, user_id):
 #     template_name = 'location_test.html'
 #     fields = ['location']
 
+# Spotify API
+# https://www.youtube.com/watch?v=9yL3rTW3SIA
 def music(request): 
     boogie_uri = 'spotify:artist:31W5EY0aAly4Qieq6OFu6I'
     spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id = '7bf326e10aca4f7284dc44c36817c6e3', client_secret = 'ff31284598a940cf999ccf42fdbf4d16'))
@@ -154,12 +156,14 @@ def music(request):
     results = spotify.artist_top_tracks(boogie_uri)
     songs_results = results['tracks'][:20]
     return render(request,'our-music-choice.html',{"results":songs_results})
+
 # def LikeView(request, pn):
 #     Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likes + 1)
 def LikeView(request, pn, pk):
     Posts.objects.filter(post_number=pn)[0].likers.add(User.objects.get(id=pk))
     Posts.objects.filter(post_number=pn).update(likes=Posts.objects.filter(post_number=pn)[0].likers.count())
     return HttpResponseRedirect(reverse('forum'))
+
 
 class ForumProfileView(generic.ListView):
     model = Profile
