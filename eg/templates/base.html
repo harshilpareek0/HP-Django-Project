@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{%static 'css/style.css' %">
 
+    <!-- Bootstrap: https://getbootstrap.com/docs/4.0/getting-started/introduction/ 
+      Software Licensing: MIT
+      Used throughout the website-->
     <title>Exercise Gamification</title>
     
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,7 +37,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% if user.profile.id%}
-              <a class="dropdown-item" href="{% url 'profile_view' user.id %} ">View Profile Page</a>
+              <a class="dropdown-item" href="/view_profile/">View Profile Page</a>
               <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %} ">Edit Profile Page</a>
               {%else%}
               <a class="dropdown-item" href="{% url 'create_profile_page'%} ">Create Profile</a>

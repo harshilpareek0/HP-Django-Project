@@ -10,9 +10,11 @@
 
 <blockquote class="blockquote text-center">
     {% if profile_info %}
-    <h1 style="margin-bottom: 25px;margin-left: 36px; font-size: 100px; color: #fbfcfd; text-align:center; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Current Level of user: {{level}}</h1>
-    <ul>
+    <!-- <h1 style="margin-bottom: 25px;margin-left: 36px; font-size: 100px; color: #fbfcfd; text-align:center; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Current Level of {{profile.user}}: {{level}}</h1>
+    <ul> -->
         {% for profile in profile_info %}
+        <h1 style="margin-bottom: 25px;margin-left: 36px; font-size: 75px; color: #fbfcfd; text-align:center; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Current Level of {{profile.user}}: {{level}}</h1>
+    <ul>
         <div class="container">
             {%if profile.profile_pic.url%}
               <img src="{{profile.profile_pic.url}}" alt="" style="width:300px;height:300px;" class="ui-w-100 rounded-circle">
@@ -70,11 +72,12 @@
   {% endif %}
 </div>
 
-<a class="btn" href="/" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">go back to the index page</a>
+<a class="btn" href="/forum" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">go back to the forum</a>
         
 </ul>
 </blockquote>
 {% else %}
 <p>No such profile exists</p>
+<a class="btn" href="/create_profile_page" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">Create a Profile</a>
 {% endif %}
 {% endblock content %}

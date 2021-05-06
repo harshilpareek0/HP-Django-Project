@@ -15,7 +15,7 @@
       <small style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Welcome, {{user.first_name}}<small>
       <h1 style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size:80px;margin: 10px 0 30px; line-height:80px">Get Swole or <br>Die Trying</h1>
       <a class="btn" href="/exercise" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">Feed Your Progress</a>
-        <a class="btn" href="{% url 'profile_view' user.id %}" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">View Profile</a>
+        <a class="btn" href="view_profile/" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">View Profile</a>
     </div>
 
   
@@ -26,77 +26,8 @@
       <img src="{% static '/exgame/images/default_image.png' %}" style="width:500px;height:600px;" class = "rounded-circle" alt="Card image cap">
       {%endif%}
     </div>
-
-  
-
-  <!-- <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link active" a href="/forum_post">Make A Post</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" a href="/exercise">Input Excercise</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" a href="/progress/{{user.id}}">View Progress</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" a href="/forum/">View Fourm</a>
-    </li>
-  </ul>
-
-  <div class="jumbotron">
-    <h1 class="display-4">Welcome {{ user.first_name }}</h1>
-    <p class="lead">This is the home page where you can make a post, view profiles and input your excercises</p>
-    <hr class="my-4">
-    <p>This Excercise Gamification Web App was constructed for CS 3240</p>
-    {% if user.profile.id %}          
-    <a href="{% url 'show_profile_page' user.profile.id %} " class="btn btn-primary btn-lg">Visit Profile</a> 
-    {%else%}
-    <a href="{% url 'create_profile_page'%} " class="btn btn-primary btn-lg">Create Profile</a>
-    {% endif %} 
+ 
   </div>
-  <br></br> -->
-    
-
-    
-  </div>
-
-  <!-- <h3 style = "text-align:center">Welcome {{ user.first_name }}</h3>
-  <br></br> -->
-  
-  <!-- <p> Make a <a href="/forum_post"> post</a></p>
-  <p> Input  <a href="/exercise"> exercises </a></p>
-  <p> View <a href="/progress/{{user.id}}"> progress</a></p>
-  <p> Visit <a href="/forum/"> Forums </a></p> -->
-
-  <!-- <div class="card mb-3">
-    <div class = "row no-gutters">
-      <div class = "col-md-2">
-        {%if user.profile.profile_pic.url%}
-        <img class="card-img-top" src="{{request.user.profile.profile_pic.url}}" class = "rounded-circle" alt="Card image cap">
-        {% else %}
-        <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" class = "rounded-circle" alt="Card image cap">
-        {%endif%}
-        </div>
-        <div class= "col-md-10">
-          <div class="card-body">
-            <h5 class="card-title">{{user.username}}</h5>
-              <p class="card-text">{{user.profile.bio}}</p>
-              <p class="card-text"><small class = "text-muted"> Joined {{user.date_joined}}</small></p>
-
-              {% if user.profile.id %}
-              
-              <a href="{% url 'show_profile_page' user.profile.id %} " class="btn btn-primary">Visit Profile</a> 
-              
-              {%else%}
-              <a href="{% url 'create_profile_page'%} " class="btn btn-primary">Create Profile</a> 
-
-              {% endif %}
-              </div>
-              </div>
-    </div>
-  </div> -->
-
  
   {% else %}
   <link rel="stylesheet" type ="text/css" href="{% static 'style.css' %}" class = "center">
