@@ -28,7 +28,7 @@
 
 <div class = "container" style = "color:#fbfcfd">
   <p class="text-left" style = "font-size:40px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom:-0.20rem">PROGRESS:</p>
-  <p class="text-left" style ="font-style:italic">The user {{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
+  <p class="text-left" style ="font-style:italic">{{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
 </div>
     </ul>
 </blockquote>
@@ -65,7 +65,7 @@
   <p class="text-left" style = "font-size:40px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Exercise History:</p>
   {% if exercise_list %}
   {% for exercise, exercise_count in exercises.items %}
-  <p class="text-left">The user has done the exercise "{{exercise}}" {{exercise_count}} times</p>
+  <p class="text-left">They have done the exercise "{{exercise}}" {{exercise_count}} times</p>
   {% endfor %}
   {% else %}
   <p class="text-left"> No history yet</p>
