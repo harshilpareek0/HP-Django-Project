@@ -15,9 +15,9 @@
         {% for profile in profile_info %}
         <div class="container">
             {%if profile.profile_pic.url%}
-              <img class="card-img-top" src="{{profile.profile_pic.url}}" alt="" style="width:300px;height:300px;" class="ui-w-100 rounded-circle">
+              <img src="{{profile.profile_pic.url}}" alt="" style="width:300px;height:300px;" class="ui-w-100 rounded-circle">
             {%else%}
-            <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" style="width:300px;height:300px;" class = "rounded-circle" alt="Card image cap">
+            <img src="{% static '/exgame/images/default_image.png' %}" style="width:300px;height:300px;" class = "rounded-circle" alt="Card image cap">
             {%endif%}
 
             <p style="color:#fbfcfd; margin: 15px 15px">Joined {{profile.user.date_joined}}</p>
@@ -69,6 +69,8 @@
   <p class="text-left"> No history yet</p>
   {% endif %}
 </div>
+
+<a class="btn" href="/" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">go back to the index page</a>
         
 </ul>
 </blockquote>
