@@ -74,3 +74,14 @@ class FirstTestCase(TestCase):
         response = self.client.get('/forum/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('forum.html')
+
+    def test_own_profile_view(self):
+        login = self.client.login(username="Can Unlu", email="cu6fb@virginia.edu", password="password")
+        response = self.client.get('/view_profile/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('view_own_profile.html')
+
+    def test_music_view(self):
+        response = self.client.get('/our-music-choice/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('our-music-choice.html')
