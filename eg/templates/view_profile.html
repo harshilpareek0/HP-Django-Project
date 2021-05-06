@@ -20,17 +20,19 @@
             <img class="card-img-top" src="{% static '/exgame/images/default_image.png' %}" style="width:300px;height:300px;" class = "rounded-circle" alt="Card image cap">
             {%endif%}
 
-            <p style="color:#fbfcfd; margin: 15px 15px">Joined {{profile.date_joined}}</p>
+            <p style="color:#fbfcfd; margin: 15px 15px">Joined {{profile.user.date_joined}}</p>
             <h5 style="margin: 15px 15px; color: #fbfcfd; ">{{profile.bio}}</h5>
         </div>
 
 <div class = "container" style = "color:#fbfcfd">
   <p class="text-left" style = "font-size:40px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-bottom:-0.20rem">PROGRESS:</p>
   <p class="text-left" style ="font-style:italic">The user {{profile.user}} has made {{progress_percentage}} % progress towards the next level</p>
- <div>
-     <img src="{% static 'eg/images/blue-box.jpg' %}" class="bar" width="{{progress}}" height="100">
-     <img src="{% static 'eg/images/grey-box.png' %}" class="outline" width="1000" height="100">
- </div>
+</div>
+    </ul>
+</blockquote>
+<ul>
+     <img src="{% static 'eg/images/grey-box.png' %}" class="outline" width="1000" height="100" style="margin-left: 14px">
+     <img src="{% static 'eg/images/blue-box.jpg' %}" class="bar" width="{{progress}}" height="100" style="margin-left: 14px">
     <style>
           .bar
            {
@@ -42,8 +44,11 @@
            }
 
     </style>
+</ul>
+<blockquote class="blockquote text-center">
+    <ul>
+ <div class = "container" style = "color:#fbfcfd">
 
- 
   <p class="text-left" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:40px">TROPHIES EARNED:</p>
   {% if level > 0 %}
   <p class="text-left">Bronze Trophy Earned <img src="{% static 'eg/images/bronze.png' %}" width="150" height="150"></p>

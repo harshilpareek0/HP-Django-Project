@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 {% load static %}
 
-<h1> User Profile</h1>
+<h1 style="color:white"> User Profile</h1>
+<h1 style="margin-bottom: 25px;margin-left: 36px; font-size: 100px; color: #fbfcfd; text-align:center; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Current Level of user: {{level}}</h1>
 
 <blockquote class="blockquote text-center">
     {% if profile_info %}
@@ -36,11 +37,11 @@
             </div>
           </div>
 
-        <p class="text-left">Progress:</p>
-        <div>
-            <img src="{% static 'eg/images/blue-box.jpg' %}" class="bar" width="{{progress}}" height="100">
-            <img src="{% static 'eg/images/grey-box.png' %}" class="outline" width="1000" height="100">
-        </div>
+        <p class="text-left" style="color:white">Progress:</p>
+    </ul>
+</blockquote>
+            <img src="{% static 'eg/images/grey-box.png' %}" class="outline" width="1000" height="100" style="margin-left: 39px">
+            <img src="{% static 'eg/images/blue-box.jpg' %}" class="bar" width="{{progress}}" height="100" style="margin-left: 39px">
 
         <style>
             .bar
@@ -53,30 +54,31 @@
             }
 
         </style>
-        <p class="text-left"> Your Exercise history:</p>
+<blockquote class="blockquote text-center">
+    <ul>
+        <p class="text-left" style="color:white"> Your Exercise history:</p>
         {% if exercise_list %}
         {% for exercise, exercise_count in exercises.items %}
-        <p class="text-left">You have done the exercise "{{exercise}}" {{exercise_count}} times</p>
+        <p class="text-left" style="color:white">You have done the exercise "{{exercise}}" {{exercise_count}} times</p>
         {% endfor %}
         {% else %}
-        <p class="text-left"> No history yet</p>
+        <p class="text-left" style="color:white"> No history yet</p>
         {% endif %}
-        <p class="text-left"> You have made {{progress_percentage}} % progress towards the next level</p>
-        <p class="text-left">Your level is {{level}}</p>
+        <p class="text-left" style="color:white"> You have made {{progress_percentage}} % progress towards the next level</p>
         {% if level > 0 %}
-        <p class="text-left">Bronze Trophy Earned <img src="{% static 'eg/images/bronze.png' %}" width="150" height="150"></p>
+        <p class="text-left" style="color:white">Bronze Trophy Earned <img src="{% static 'eg/images/bronze.png' %}" width="150" height="150"></p>
         {% endif %}
         {% if level > 1 %}
-        <p class="text-left"> Silver Trophy Earned <img src="{% static 'eg/images/silver.png' %}" width="150" height="150"></p>
+        <p class="text-left" style="color:white"> Silver Trophy Earned <img src="{% static 'eg/images/silver.png' %}" width="150" height="150"></p>
         {% endif %}
         {% if level > 2 %}
-        <p class="text-left"> Gold Trophy Earned <img src="{% static 'eg/images/gold.png' %}" width="150" height="150"></p>
+        <p class="text-left" style="color:white"> Gold Trophy Earned <img src="{% static 'eg/images/gold.png' %}" width="150" height="150"></p>
         {% endif %}
         {% endfor %}
-        <p><a href="/"> go back to index</a></p>
+        <p><a class="btn" href="/" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">go back to index</a></p>
     </ul>
 </blockquote>
 {% else %}
-<p>No such profile exists</p>
+<a class="btn" href="/create_profile_page" role="button" style="color: #fbfcfd; padding: 10px 25px; background: transparent; border: 1px solid #fff; border-radius: 20px; outline: none; cursor: pointer">Create Your Profile!</a>
 {% endif %}
 {% endblock content %}
